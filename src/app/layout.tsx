@@ -20,12 +20,8 @@ export const metadata: Metadata = {
   description: SITE.description,
   metadataBase: new URL(SITE.url),
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: "/apple-touch-icon.png",
+    icon: { url: "/favicon.svg", type: "image/svg+xml" },
+    apple: "/favicon.svg",
   },
   manifest: "/site.webmanifest",
   openGraph: {
@@ -53,7 +49,7 @@ const jsonLdOrganization = {
   name: "Payroll Synergy Experts",
   alternateName: "PSE",
   url: "https://www.payrollsynergyexperts.com",
-  logo: "https://www.payrollsynergyexperts.com/android-chrome-512x512.png",
+  logo: "https://www.payrollsynergyexperts.com/favicon.svg",
   description:
     "AI-powered payroll compliance and controls platform. Detect compliance issues early, generate audit-ready evidence, and keep every payroll run clean.",
   sameAs: [

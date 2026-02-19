@@ -1,0 +1,14 @@
+{
+  "name": "Payroll Synergy Experts",
+  "short_name": "PSE",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#0f1a2e",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
