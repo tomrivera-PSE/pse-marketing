@@ -1,4 +1,5 @@
 import { SITE, SOCIAL } from "@/lib/constants";
+import FooterLegalLinks from "./FooterLegalLinks";
 
 export default function Footer() {
   return (
@@ -123,20 +124,7 @@ export default function Footer() {
           <span className="text-[13px] text-steel">
             &copy; 2026 {SITE.name}. All rights reserved.
           </span>
-          <div className="flex gap-4">
-            <a
-              href="#"
-              className="text-[13px] text-steel-muted no-underline hover:text-white transition-colors"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-[13px] text-steel-muted no-underline hover:text-white transition-colors"
-            >
-              Terms
-            </a>
-          </div>
+          <FooterLegalLinks />
         </div>
       </div>
     </footer>

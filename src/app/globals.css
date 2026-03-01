@@ -52,6 +52,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section[id] {
+  scroll-margin-top: 88px;
+}
+
 /* Reveal animations */
 @keyframes reveal-up {
   from {
