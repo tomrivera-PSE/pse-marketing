@@ -2,9 +2,11 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
+import { IndustryBar } from "@/components/sections/IndustryBar";
 import Services from "@/components/sections/Services";
 import ChapAI from "@/components/sections/ChapAI";
-import WhyPSE from "@/components/sections/WhyPSE";
+import { BenchmarkMetrics } from "@/components/sections/BenchmarkMetrics";
+import { InsightCarousel } from "@/components/sections/InsightCarousel";
 import DemoRequestForm from "@/components/forms/DemoRequestForm";
 
 export default function Home() {
@@ -14,9 +16,11 @@ export default function Home() {
       <main>
         <Hero />
         <TrustBar />
+        <IndustryBar />
         <Services />
         <ChapAI />
-        <WhyPSE />
+        <BenchmarkMetrics />
+        <InsightCarousel />
         <DemoRequestForm />
       </main>
       <Footer />
