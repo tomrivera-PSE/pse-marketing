@@ -622,3 +622,63 @@ section[id] {
 .est-context__stat { font-family: var(--font-mono, monospace); font-size: 2rem; font-weight: 500; color: var(--color-navy, #0f1c2e); letter-spacing: -0.02em; line-height: 1; margin-bottom: 0.5rem; }
 .est-context__stat-label { font-size: 0.85rem; color: var(--color-steel, #4a6580); line-height: 1.5; margin-bottom: 0.75rem; }
 .est-context__source { font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--color-steel, #7a97b0); }
+
+/* ── Sprint 3B: PDF Download ── */
+.est-download {
+  margin-bottom: 1.25rem;
+}
+.est-download__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-blue-accent, #1e5fa8);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: var(--font-sans, sans-serif);
+}
+.est-download__btn:hover:not(:disabled) {
+  background: var(--color-steel-light, #7a95ad);
+}
+.est-download__btn:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+.est-download__note {
+  font-size: 0.72rem;
+  color: var(--color-steel, #7a97b0);
+  text-align: center;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Soft ask — shown after download */
+.est-soft-ask {
+  background: var(--color-ice, #e8f0f8);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+.est-soft-ask__text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-navy, #0f1c2e);
+  margin-bottom: 0.35rem;
+}
+.est-soft-ask__link {
+  font-size: 0.82rem;
+  color: var(--color-blue-accent, #1e5fa8);
+  text-decoration: none;
+  font-weight: 500;
+}
+.est-soft-ask__link:hover {
+  text-decoration: underline;
+}

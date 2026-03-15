@@ -28,20 +28,17 @@ const DEFAULT_INPUTS: EstimatorInputs = {
   payrollRunsPerYear: 26,
 };
 
-type Step = 'inputs' | 'results' | 'captured';
-
 export function ComplianceEstimator() {
-  const [step, setStep] = useState<Step>('inputs');
+  const [showResults, setShowResults] = useState(false);
   const [inputs, setInputs] = useState<EstimatorInputs>(DEFAULT_INPUTS);
   const [results, setResults] = useState<EstimatorOutputs | null>(null);
-  const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [submitting, setSubmitting] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
 
   const handleCalculate = () => {
     const output = calculateExposure(inputs);
     setResults(output);
-    setStep('results');
+    setShowResults(true);
     setTimeout(() => {
       document.getElementById('estimator-results')?.scrollIntoView({
         behavior: 'smooth', block: 'start'
@@ -49,29 +46,18 @@ export function ComplianceEstimator() {
     }, 100);
   };
 
-  const handleEmailSubmit = async () => {
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setEmailError('Please enter a valid work email');
-      return;
-    }
-    setEmailError('');
-    setSubmitting(true);
+  const handleDownload = async () => {
+    if (!results) return;
+    setDownloading(true);
     try {
-      await fetch('/api/lead-capture', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          source: 'compliance-estimator',
-          estimatorInputs: inputs,
-          estimatorTotal: results?.totalAnnualExposure,
-        }),
-      });
-    } catch {
-      // Fail silently — lead capture failure should not block UX
+      const { generateComplianceReport } = await import('@/lib/generateReport');
+      await generateComplianceReport(results);
+      setDownloaded(true);
+    } catch (err) {
+      console.error('[PDF generation error]', err);
+    } finally {
+      setDownloading(false);
     }
-    setSubmitting(false);
-    setStep('captured');
   };
 
   return (
@@ -146,7 +132,7 @@ export function ComplianceEstimator() {
       </div>
 
       {/* Results panel */}
-      {step !== 'inputs' && results && (
+      {showResults && results && (
         <div className="est-results" id="estimator-results">
 
           <div className="est-results__header">
@@ -200,60 +186,51 @@ export function ComplianceEstimator() {
             </div>
           </div>
 
-          {/* Lead gate — email for PDF */}
-          {step === 'results' && (
-            <div className="est-gate">
-              <p className="est-gate__headline">
-                Get the full breakdown with source citations
-              </p>
-              <p className="est-gate__sub">
-                We&apos;ll email a PDF report with the complete calculation,
-                all data sources, and how PSE addresses each exposure area.
-              </p>
-              <div className="est-gate__form">
-                <input
-                  type="email"
-                  placeholder="Work email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  onKeyDown={e => e.key === 'Enter' && handleEmailSubmit()}
-                  className={`est-gate__input${emailError ? ' est-gate__input--error' : ''}`}
-                />
-                <button
-                  className="est-gate__btn"
-                  onClick={handleEmailSubmit}
-                  disabled={submitting}
-                >
-                  {submitting ? 'Sending...' : 'Email me the report'}
-                </button>
-              </div>
-              {emailError && (
-                <p className="est-gate__error">{emailError}</p>
+          {/* PDF Download */}
+          <div className="est-download">
+            <button
+              className="est-download__btn"
+              onClick={handleDownload}
+              disabled={downloading}
+            >
+              {downloading ? (
+                <>Generating PDF...</>
+              ) : downloaded ? (
+                <>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                    width="14" height="14">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  Report downloaded
+                </>
+              ) : (
+                <>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                    width="14" height="14">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Download full report (PDF)
+                </>
               )}
-              <p className="est-gate__skip">
-                <Link href="/#demo" className="est-gate__demo-link">
-                  Skip the report — request a demo instead
-                </Link>
-              </p>
-            </div>
-          )}
+            </button>
+            <p className="est-download__note">
+              Includes methodology, source citations, and breakdown by exposure category.
+              No email required.
+            </p>
+          </div>
 
-          {step === 'captured' && (
-            <div className="est-captured">
-              <div className="est-captured__icon">&#10003;</div>
-              <p className="est-captured__headline">Report on its way</p>
-              <p className="est-captured__sub">
-                Check your inbox. The full breakdown includes source
-                citations for every figure in this estimate.
+          {/* Soft ask — only shown after download */}
+          {downloaded && (
+            <div className="est-soft-ask">
+              <p className="est-soft-ask__text">
+                Want PSE to walk through this with you?
               </p>
-              <Link href="/#demo" className="est-cta-btn">
-                Request a demo to discuss your exposure
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                  width="13" height="13">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
-                </svg>
+              <Link href="/#demo" className="est-soft-ask__link">
+                Request a 30-minute demo &rarr;
               </Link>
             </div>
           )}
@@ -266,7 +243,7 @@ export function ComplianceEstimator() {
 
           <button
             className="est-recalculate"
-            onClick={() => { setStep('inputs'); setResults(null); setEmail(''); }}
+            onClick={() => { setShowResults(false); setResults(null); setDownloaded(false); }}
           >
             Recalculate
           </button>
