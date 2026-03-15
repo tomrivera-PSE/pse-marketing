@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SITE, SOCIAL } from "@/lib/constants";
 import FooterLegalLinks from "./FooterLegalLinks";
 
@@ -28,18 +29,20 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-1">
               {[
-                "Payroll Processing",
-                "Tax & Compliance",
-                "Workforce Analytics",
-                "Advisory",
+                { name: "Payroll Processing", slug: "payroll-processing" },
+                { name: "Tax & Compliance", slug: "tax-compliance" },
+                { name: "Workforce Analytics", slug: "workforce-analytics" },
+                { name: "Benefits Integration", slug: "benefits-integration" },
+                { name: "System Integration", slug: "system-integration" },
+                { name: "Advisory", slug: "strategic-advisory" },
               ].map((s) => (
-                <a
-                  key={s}
-                  href="#services"
+                <Link
+                  key={s.slug}
+                  href={`/services/${s.slug}`}
                   className="text-sm text-steel-muted no-underline hover:text-white transition-colors py-1"
                 >
-                  {s}
-                </a>
+                  {s.name}
+                </Link>
               ))}
             </div>
           </div>
@@ -50,24 +53,24 @@ export default function Footer() {
               Platform
             </h4>
             <div className="flex flex-col gap-1">
-              <a
-                href="#chap"
+              <Link
+                href="/chap-ai"
                 className="text-sm text-steel-muted no-underline hover:text-white transition-colors py-1"
               >
                 CHAP AI
-              </a>
-              <a
-                href="#chap"
+              </Link>
+              <Link
+                href="/chap-ai#chap-guard"
                 className="text-sm text-steel-muted no-underline hover:text-white transition-colors py-1"
               >
                 CHAP Guard
-              </a>
-              <a
-                href="#demo"
+              </Link>
+              <Link
+                href="/#demo"
                 className="text-sm text-steel-muted no-underline hover:text-white transition-colors py-1"
               >
                 Request Access
-              </a>
+              </Link>
             </div>
           </div>
 

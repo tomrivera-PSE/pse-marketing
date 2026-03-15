@@ -32,10 +32,14 @@ export default function ChapAI() {
           </h2>
           <div className="chap-definition-block">
             <div className="chap-definition-block__term">
-              CHAP = <strong>Compliance, Heuristics, Audit &amp; Policy</strong>
+              CHAP = <strong>Compliance and Human Approval Processor</strong>
             </div>
             <div className="chap-definition-block__body">
-              CHAP AI is the intelligence layer that sits between your payroll system and the regulatory landscape it operates in. It does not replace your vendor &mdash; it governs the output.
+              It is a Compliance and Human Approval Processor &mdash; an AI intelligence
+              layer that analyzes payroll scenarios against federal and state
+              regulations, surfaces findings for human review, and produces
+              audit-ready determinations. Every determination requires a named
+              human approver before any action is taken.
             </div>
           </div>
         </RevealOnScroll>
