@@ -114,7 +114,7 @@ export default function ServicesPage() {
               Every decision documented, every regulation monitored, every run validated.
             </p>
             <div className="svc-hero__trust">
-              <span className="svc-trust-item">SOC 2 Compliant Infrastructure</span>
+              <span className="svc-trust-item">Enterprise-Grade Security</span>
               <span className="svc-trust-divider">·</span>
               <span className="svc-trust-item">Audit-Ready Documentation</span>
               <span className="svc-trust-divider">·</span>

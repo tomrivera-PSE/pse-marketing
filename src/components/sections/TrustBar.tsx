@@ -2,7 +2,7 @@ import { ShieldCheck, FileCheck, Globe, Radio } from "lucide-react";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 
 const TRUST_ITEMS = [
-  { icon: ShieldCheck, label: "SOC 2 Compliant Infrastructure" },
+  { icon: ShieldCheck, label: "Enterprise-Grade Security" },
   { icon: FileCheck, label: "Audit-Ready Documentation" },
   { icon: Globe, label: "Multi-State Coverage" },
   { icon: Radio, label: "Daily Regulatory Monitoring" },
