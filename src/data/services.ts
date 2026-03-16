@@ -24,6 +24,7 @@ export interface ServiceData {
   features: ServiceFeature[];
   stats: ServiceStat[];
   chapAiConnection: string;
+  screenshot?: { src: string; alt: string; caption: string };
   related: RelatedService[];
 }
 
@@ -48,6 +49,7 @@ export const serviceData: Record<string, ServiceData> = {
       { value: '33%', label: 'Of employers make payroll errors in any given period', source: 'IRS employer compliance study; EY Payroll Operations Survey 2024' },
     ],
     chapAiConnection: 'Payroll Processing is the primary integration point for CHAP AI. Every run triggers a full pre-run scan. Violations block the run until resolved. Documentation is generated automatically.',
+    screenshot: { src: '/screenshots/payroll-run.png', alt: 'Payroll run validation showing per-employee compliance checks', caption: 'CHAP AI pre-run validation — every employee checked before payroll commits' },
     related: [
       { slug: 'tax-compliance', name: 'Tax & Compliance' },
       { slug: 'workforce-analytics', name: 'Workforce Analytics' },
@@ -73,6 +75,7 @@ export const serviceData: Record<string, ServiceData> = {
       { value: '$150M', label: 'Recovered by DOL WHD in FLSA back wages in FY2024 — indicating the scale of ongoing enforcement', source: 'DOL WHD FY2024 Statistical Release' },
     ],
     chapAiConnection: 'CHAP AI validates deposit timing and withholding positions on every payroll run — flagging exposure before submission. When a tax notice arrives, CHAP AI\'s audit trail provides the documentation foundation for the PSE response plan.',
+    screenshot: { src: '/screenshots/compliance-scan.png', alt: 'CHAP AI compliance scan with statute citations for tax compliance checks', caption: 'Compliance scan — deposit timing and withholding validation with statute citations' },
     related: [
       { slug: 'payroll-processing', name: 'Payroll Processing' },
       { slug: 'strategic-advisory', name: 'Strategic Advisory' },

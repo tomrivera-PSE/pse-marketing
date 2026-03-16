@@ -60,12 +60,6 @@ export default function Footer() {
                 CHAP AI
               </Link>
               <Link
-                href="/chap-ai#chap-guard"
-                className="text-sm text-steel-muted no-underline hover:text-white transition-colors py-1"
-              >
-                CHAP Guard
-              </Link>
-              <Link
                 href="/#demo"
                 className="text-sm text-steel-muted no-underline hover:text-white transition-colors py-1"
               >

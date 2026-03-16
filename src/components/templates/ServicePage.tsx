@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { ServiceData } from '@/data/services';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import ProductScreenshot from '@/components/ui/ProductScreenshot';
 
 interface Props {
   service: ServiceData;
@@ -48,6 +49,19 @@ export function ServicePage({ service }: Props) {
             </div>
           </div>
         </section>
+
+        {/* Screenshot */}
+        {service.screenshot && (
+          <section className="svc-sub-screenshot">
+            <div className="svc-sub-screenshot__inner">
+              <ProductScreenshot
+                src={service.screenshot.src}
+                alt={service.screenshot.alt}
+                caption={service.screenshot.caption}
+              />
+            </div>
+          </section>
+        )}
 
         {/* Stats */}
         <section className="svc-sub-stats-section">

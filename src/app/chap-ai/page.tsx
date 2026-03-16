@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { ChapaInterface } from '@/components/sections/ChapaInterface';
+import ProductScreenshot from '@/components/ui/ProductScreenshot';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -121,6 +122,37 @@ export default function ChapAIPage() {
           </div>
         </section>
 
+        {/* Section 2.5 — Product Screenshots */}
+        <section className="chap-screenshots">
+          <div className="chap-screenshots__inner">
+            <p className="chap-eyebrow">Inside the platform</p>
+            <h2 className="chap-section-headline">See what CHAP AI surfaces.</h2>
+            <p className="chap-section-sub">Live screenshots from the PSE compliance platform — the same interface your payroll team uses every cycle.</p>
+            <div className="chap-screenshots__grid">
+              <ProductScreenshot
+                src="/screenshots/dashboard-overview.png"
+                alt="PSE dashboard showing compliance status across all active states"
+                caption="Dashboard — compliance status at a glance"
+              />
+              <ProductScreenshot
+                src="/screenshots/compliance-scan.png"
+                alt="CHAP AI pre-run compliance scan results with statute citations"
+                caption="Pre-run scan — violations flagged before payroll commits"
+              />
+              <ProductScreenshot
+                src="/screenshots/payroll-run.png"
+                alt="Payroll run validation showing per-employee compliance checks"
+                caption="Run validation — per-employee statutory checks"
+              />
+              <ProductScreenshot
+                src="/screenshots/audit-trail.png"
+                alt="Audit trail showing timestamped compliance records"
+                caption="Audit trail — every decision documented"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Section 3 — Coverage Matrix */}
         <section className="chap-section" style={{ background: 'var(--chap-bg-mid, #0a1628)' }}>
           <div className="chap-section__inner">
@@ -149,6 +181,70 @@ export default function ChapAIPage() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3.5 — Daily Regulatory Monitoring */}
+        <section className="chap-reg">
+          <div className="chap-reg__inner">
+            <p className="chap-eyebrow">Daily monitoring</p>
+            <h2 className="chap-section-headline">Regulatory changes reflected within one business day.</h2>
+            <p className="chap-section-sub">Federal, state, and local regulatory changes are monitored daily. When a rule changes, CHAP AI updates — your team doesn&apos;t have to.</p>
+            <div className="chap-reg__grid">
+              <div className="chap-reg-card">
+                <div className="chap-reg-card__icon">📡</div>
+                <div className="chap-reg-card__title">Federal & State Monitoring</div>
+                <div className="chap-reg-card__body">
+                  DOL, IRS, and state labor agency publications scanned daily.
+                  Rate changes, new requirements, and enforcement guidance reflected
+                  in CHAP AI rules within one business day.
+                </div>
+              </div>
+              <div className="chap-reg-card">
+                <div className="chap-reg-card__icon">⚡</div>
+                <div className="chap-reg-card__title">Same-Day Rule Updates</div>
+                <div className="chap-reg-card__body">
+                  When a minimum wage changes or a new leave mandate takes effect,
+                  the applicable CHAP AI rules update before your next payroll run —
+                  not on a quarterly release cycle.
+                </div>
+              </div>
+              <div className="chap-reg-card">
+                <div className="chap-reg-card__icon">📋</div>
+                <div className="chap-reg-card__title">Change Documentation</div>
+                <div className="chap-reg-card__body">
+                  Every rule update is logged with the source regulation, effective date,
+                  and the specific CHAP AI check it modifies — creating an audit trail
+                  of your compliance posture over time.
+                </div>
+              </div>
+              <div className="chap-reg-card">
+                <div className="chap-reg-card__icon">🔔</div>
+                <div className="chap-reg-card__title">Proactive Alerts</div>
+                <div className="chap-reg-card__body">
+                  When a regulatory change impacts your active employee population,
+                  CHAP AI flags it before your next payroll cycle — not after a
+                  violation occurs.
+                </div>
+              </div>
+            </div>
+
+            {/* Example audit log */}
+            <div className="chap-reg__log">
+              <div className="chap-reg__log-bar">
+                <span className="chap-reg__log-dot" style={{background:'#ff5f57'}} />
+                <span className="chap-reg__log-dot" style={{background:'#ffbd2e'}} />
+                <span className="chap-reg__log-dot" style={{background:'#28c840'}} />
+                <span className="chap-reg__log-label">chap-ai — regulatory update log</span>
+              </div>
+              <div className="chap-reg__log-body">
+                <div><span className="chap-reg__log-date">2026-03-14</span> <span className="chap-reg__log-ok">✓ APPLIED</span>  CA SB-1234 min wage → $16.50/hr eff 2026-04-01</div>
+                <div><span className="chap-reg__log-date">2026-03-13</span> <span className="chap-reg__log-ok">✓ APPLIED</span>  IRS Rev. Proc. 2026-12 deposit threshold update</div>
+                <div><span className="chap-reg__log-date">2026-03-12</span> <span className="chap-reg__log-warn">⚠ ALERT</span>   NY WARN Act amendment — 10-day notice for your 3 NY locations</div>
+                <div><span className="chap-reg__log-date">2026-03-11</span> <span className="chap-reg__log-ok">✓ APPLIED</span>  WA PFML rate update → 0.74% eff Q2-2026</div>
+                <div><span className="chap-reg__log-date">2026-03-10</span> <span className="chap-reg__log-ok">✓ APPLIED</span>  FLSA overtime threshold guidance (WHD Field Bulletin)</div>
               </div>
             </div>
           </div>

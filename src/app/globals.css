@@ -682,3 +682,268 @@ section[id] {
 .est-soft-ask__link:hover {
   text-decoration: underline;
 }
+
+/* ── Sprint 4A — Product Screenshot Browser Frame ── */
+.pss-frame {
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg, 0 8px 32px rgba(15,26,46,0.1));
+  background: var(--color-navy, #0f1a2e);
+}
+.pss-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--color-navy-dark, #253554);
+}
+.pss-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pss-toolbar-title {
+  margin-left: 8px;
+  font-size: 0.72rem;
+  color: var(--color-steel-muted, #a3bdd1);
+  font-family: var(--font-mono, monospace);
+}
+.pss-viewport {
+  line-height: 0;
+}
+.pss-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.pss-caption {
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  color: var(--color-steel-muted, #a3bdd1);
+  background: var(--color-navy-dark, #253554);
+  text-align: center;
+  font-style: normal;
+}
+
+/* Screenshot grid on /chap-ai */
+.chap-screenshots {
+  background: var(--chap-bg-mid, #0a1628);
+  padding: 4rem 2rem;
+}
+.chap-screenshots__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.chap-screenshots__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+@media (max-width: 768px) {
+  .chap-screenshots__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Screenshot on service sub-pages */
+.svc-sub-screenshot {
+  background: var(--color-ice, #f3f7fa);
+  padding: 3rem 2rem;
+}
+.svc-sub-screenshot__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── Sprint 4B — Regulatory Monitoring Section ── */
+.chap-reg {
+  background: var(--chap-bg, #060e18);
+  padding: 5rem 2rem;
+}
+.chap-reg__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.chap-reg__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.chap-reg-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.75rem;
+}
+.chap-reg-card__icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.chap-reg-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 0.5rem;
+}
+.chap-reg-card__body {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #94a3b8;
+}
+
+/* Audit log example */
+.chap-reg__log {
+  margin-top: 2.5rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.chap-reg__log-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+}
+.chap-reg__log-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.chap-reg__log-label {
+  margin-left: 8px;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-family: var(--font-mono, monospace);
+}
+.chap-reg__log-body {
+  padding: 1.25rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: #94a3b8;
+}
+.chap-reg__log-ok {
+  color: #4ade80;
+}
+.chap-reg__log-warn {
+  color: #fbbf24;
+}
+.chap-reg__log-date {
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .chap-reg__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Sprint 4C — Mobile Responsiveness ── */
+@media (max-width: 480px) {
+  /* Services grid */
+  .svc-grid {
+    grid-template-columns: 1fr;
+  }
+  .svc-hero__headline {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+  .svc-hero__inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* CHAP hero */
+  .chap-hero__inner {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+  .chap-hero__headline {
+    font-size: clamp(1.5rem, 5.5vw, 2rem);
+  }
+  .chap-hero__terminal {
+    display: none;
+  }
+
+  /* Steps grid */
+  .chap-steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Coverage grid */
+  .chap-coverage-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Service sub-page */
+  .svc-sub-hero__headline {
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+  }
+  .svc-sub-body__inner {
+    padding: 0 1rem;
+  }
+  .svc-sub-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .svc-sub-related__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Estimator */
+  .est-card {
+    padding: 1.25rem;
+  }
+  .est-result__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* CHAP callout on services page */
+  .svc-chap-callout__inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* CTA sections */
+  .svc-cta__inner,
+  .chap-cta-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Proof stats */
+  .chap-proof-stat {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Screenshots grid */
+  .chap-screenshots__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Regulatory grid */
+  .chap-reg__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet overrides */
+@media (min-width: 481px) and (max-width: 768px) {
+  .svc-grid {
+    grid-template-columns: 1fr;
+  }
+  .chap-hero__inner {
+    grid-template-columns: 1fr;
+  }
+  .chap-hero__terminal {
+    display: none;
+  }
+  .svc-chap-callout__inner {
+    grid-template-columns: 1fr;
+  }
+}
