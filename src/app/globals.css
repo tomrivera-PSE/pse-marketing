@@ -947,3 +947,66 @@ section[id] {
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Sprint 4B — Credibility Strip ── */
+.cred-strip {
+  background: #ffffff;
+  border-top: 1px solid rgba(15,28,46,0.06);
+  border-bottom: 1px solid rgba(15,28,46,0.06);
+  padding: 3rem 2rem;
+}
+.cred-strip__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cred-strip__lead {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+.cred-strip__metrics {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.cred-strip__metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  flex: 1;
+  max-width: 220px;
+}
+.cred-strip__number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-navy, #0f1c2e);
+  line-height: 1;
+}
+.cred-strip__label {
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+.cred-strip__divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(15,28,46,0.10);
+  flex-shrink: 0;
+}
+@media (max-width: 760px) {
+  .cred-strip__metrics {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .cred-strip__divider {
+    width: 40px;
+    height: 1px;
+  }
+}
