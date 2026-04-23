@@ -5,6 +5,46 @@ interface DemoRequestData {
   employees?: string;
 }
 
+interface ChapLeadData {
+  email: string;
+  sessionId: string;
+  firstQuestion?: string;
+}
+
+export function chapLeadNotificationHtml(data: ChapLeadData): string {
+  const rows: [string, string][] = [
+    ["Email", data.email],
+    ["Session", data.sessionId],
+    ["First question", data.firstQuestion || "—"],
+    [
+      "Captured",
+      new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" }),
+    ],
+  ];
+
+  return `
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 520px; margin: 0 auto;">
+      <h2 style="color: #0b1d3a; margin-bottom: 16px;">New CHAP Widget Lead</h2>
+      <p style="color: #4a5e78; font-size: 13px; margin: 0 0 20px;">
+        A visitor to <strong>/chap-ai</strong> hit the email gate after using
+        up their free questions. This is a softer intent signal than a demo
+        request — they're still in research mode.
+      </p>
+      <table style="width: 100%; border-collapse: collapse;">
+        ${rows
+          .map(
+            ([label, value]) => `
+          <tr>
+            <td style="padding: 8px 12px; border-bottom: 1px solid #eceef2; color: #6b7280; font-size: 14px; width: 140px;">${label}</td>
+            <td style="padding: 8px 12px; border-bottom: 1px solid #eceef2; color: #1c1c2e; font-size: 14px;">${value}</td>
+          </tr>`
+          )
+          .join("")}
+      </table>
+    </div>
+  `;
+}
+
 export function internalNotificationHtml(data: DemoRequestData): string {
   const rows = [
     ["Name", data.name],
