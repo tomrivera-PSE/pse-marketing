@@ -1010,3 +1010,159 @@ section[id] {
     height: 1px;
   }
 }
+
+/* ================================================================
+   CHAP Determination renderer (Phase 10)
+   Uses only existing --chap-* tokens (dark surface) plus the status
+   colors from @theme. Mirrors the .chap-interface__exception shape.
+================================================================ */
+.chap-determination {
+  background: var(--chap-bg-card, #0d1e35);
+  border: 1px solid var(--chap-border, rgba(46,127,216,0.15));
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 100%;
+  font-size: 0.78rem;
+}
+.chap-determination__label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chap-text-muted, #4a6580);
+  margin-bottom: 0.35rem;
+}
+.chap-determination__regulation {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--chap-border, rgba(46,127,216,0.15));
+}
+.chap-determination__reg-ref {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
+  color: var(--chap-accent, #2e7fd8);
+  margin-bottom: 0.15rem;
+}
+.chap-determination__reg-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+.chap-determination__reg-meta {
+  font-size: 0.7rem;
+  color: var(--chap-text-muted, #4a6580);
+}
+.chap-determination__reg-jurisdiction {
+  text-transform: capitalize;
+}
+.chap-determination__reg-link {
+  color: var(--chap-accent, #2e7fd8);
+  text-decoration: none;
+}
+.chap-determination__reg-link:hover {
+  text-decoration: underline;
+}
+.chap-determination__section {
+  display: flex;
+  flex-direction: column;
+}
+.chap-determination__analysis {
+  margin: 0;
+  color: var(--chap-text, #c8daf0);
+  line-height: 1.6;
+}
+.chap-determination__section--badge {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.chap-determination__badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.chap-determination__badge--flagged {
+  background: rgba(220, 38, 38, 0.15);
+  color: var(--color-red, #dc2626);
+  border: 1px solid rgba(220, 38, 38, 0.30);
+}
+.chap-determination__badge--clear {
+  background: rgba(22, 163, 74, 0.15);
+  color: var(--color-green, #16a34a);
+  border: 1px solid rgba(22, 163, 74, 0.30);
+}
+.chap-determination__badge--review {
+  background: rgba(217, 119, 6, 0.15);
+  color: var(--color-amber, #d97706);
+  border: 1px solid rgba(217, 119, 6, 0.30);
+}
+.chap-determination__rationale {
+  font-size: 0.78rem;
+  color: var(--chap-text, #c8daf0);
+  line-height: 1.5;
+  flex: 1;
+  min-width: 200px;
+}
+.chap-determination__citations {
+  list-style: decimal;
+  padding-left: 1.15rem;
+  margin: 0;
+  color: var(--chap-text, #c8daf0);
+}
+.chap-determination__citation {
+  padding: 0.2rem 0;
+}
+.chap-determination__citation-link {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  color: var(--chap-accent, #2e7fd8);
+  text-decoration: none;
+}
+.chap-determination__citation-link:hover {
+  text-decoration: underline;
+}
+.chap-determination__confidence {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--chap-text-muted, #4a6580);
+}
+.chap-determination__disclaimer {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  color: var(--chap-text-muted, #4a6580);
+  line-height: 1.6;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--chap-border, rgba(46,127,216,0.15));
+}
+.chap-determination--oos {
+  text-align: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+.chap-determination__oos-text {
+  font-size: 0.82rem;
+  color: var(--chap-text, #c8daf0);
+  line-height: 1.5;
+}
+.chap-determination__oos-cta {
+  font-size: 0.78rem;
+  color: var(--chap-accent, #2e7fd8);
+  text-decoration: none;
+  font-weight: 600;
+}
+.chap-determination__oos-cta:hover {
+  text-decoration: underline;
+}
